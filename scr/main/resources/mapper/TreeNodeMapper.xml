@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.mapper.TreeNodeMapper">
+    <select id="getAllNode" resultType="com.code.entity.TreeNode">
+        select * from tree_node
+    </select>
+    <insert id="addNode">
+        insert into tree_node(parent_id,node_type,node_name) values(#{parentId},#{nodeType},#{nodeName})
+    </insert>
+    <update id="editNode">
+        update tree_node set node_name = #{nodeName} where id = #{id}
+    </update>
+    <delete id="deleteNode">
+        delete from tree_node where id = #{id}
+    </delete>
+</mapper>

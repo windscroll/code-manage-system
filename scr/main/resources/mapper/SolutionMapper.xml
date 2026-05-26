@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code.mapper.SolutionMapper">
+    <select id="getSolutionByNodeId" resultType="com.code.entity.QuestionSolution">
+        select * from question_solution where node_id = #{nodeId} order by solve_sort asc
+    </select>
+    <insert id="saveSolution">
+        insert into question_solution(node_id,solve_sort,lang_tag,solution_desc,code_content)
+        values(#{nodeId},#{solveSort},#{langTag},#{solutionDesc},#{codeContent})
+    </insert>
+    <delete id="deleteSolution">
+        delete from question_solution where id = #{id}
+    </delete>
+</mapper>
