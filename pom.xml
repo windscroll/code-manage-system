@@ -6,23 +6,22 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 改成你的项目坐标 -->
     <groupId>com.example</groupId>
     <artifactId>code-manage-system</artifactId>
     <version>1.0.0</version>
     <name>code-manage-system</name>
     <description>代码管理系统</description>
 
-    <!-- Spring Boot 父工程（统一管理版本）-->
+    <!-- Railway 兼容最好的 Spring Boot 版本 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version> <!-- Railway 兼容很好的稳定版 -->
+        <version>2.7.18</version>
         <relativePath/>
     </parent>
 
     <properties>
-        <java.version>11</java.version> <!-- Railway 推荐 11/17 -->
+        <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,7 +34,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- 数据库 MySQL（补了版本） -->
+        <!-- MySQL 驱动（已补版本） -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -43,11 +42,10 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Spring Session（补了版本） -->
+        <!-- 替换掉原来的 spring-boot-starter-session -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-session</artifactId>
-            <version>2.7.18</version>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-core</artifactId>
         </dependency>
 
         <!-- 常用工具 -->
@@ -67,7 +65,6 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot 打包插件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -79,6 +76,11 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
             </plugin>
         </plugins>
     </build>
